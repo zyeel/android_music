@@ -140,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
                         myService.previous();
                         setPlaysong();
                     }
-
                 } catch (Exception e) {
                     Log.i("TAG", e.getMessage());
                 }
@@ -167,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
                             setPlaysong();
                         }
                     }
-
                 } catch (Exception e) {
                     Log.i("TAG", e.getMessage());
                 }
@@ -523,8 +521,10 @@ public class MainActivity extends AppCompatActivity {
 
     //设置当前播放的列表项的样式
     private void setPlaysong(){
-        adapter.setPlay(myService.songIndex);
-        adapter.notifyDataSetChanged();
+        if(myService.musicList.size() > 0) {
+            adapter.setPlay(myService.songIndex);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     //初始化列表
@@ -595,8 +595,8 @@ public class MainActivity extends AppCompatActivity {
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
                     //request again!
-                    ActivityCompat.requestPermissions(MainActivity.this,
-                            new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},1);
+                    //ActivityCompat.requestPermissions(MainActivity.this,
+                     //       new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},1);
                 }
             }
         }
