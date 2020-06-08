@@ -199,10 +199,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(fromUser){
-                    //用户拖动进度条，改变当前时间值
-                    int all_time = myService.mediaPlayer.getDuration();
-                    int seekbar_max = seekBar.getMax();
-                    now_text.setText(setNowtime((all_time * progress / seekbar_max) / 1000));
+                    if(myService.musicList.size() > 0){
+                        //用户拖动进度条，改变当前时间值
+                        int all_time = myService.mediaPlayer.getDuration();
+                        int seekbar_max = seekBar.getMax();
+                        now_text.setText(setNowtime((all_time * progress / seekbar_max) / 1000));
+                    }
                 }
                 else {
                     if (myService.mediaPlayer.isPlaying())
@@ -564,6 +566,7 @@ public class MainActivity extends AppCompatActivity {
         //进度条
         if(all_time == 0){
             seekBar.setProgress(0);
+            all_text.setText(setAlltime(myService.musicList.get(myService.songIndex).getDuration()/1000));
         }else {
             seekBar.setMax(all_time/1000);
             int seekbar_max = seekBar.getMax();
