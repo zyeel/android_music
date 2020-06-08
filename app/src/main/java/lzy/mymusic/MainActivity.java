@@ -417,7 +417,7 @@ public class MainActivity extends AppCompatActivity {
     //唤醒线程
     public void onThreadResume(Thread t) {
         try {
-            synchronized(this) {
+            synchronized(t) {
                 t.notify();
             }
         } catch (Exception e) {
