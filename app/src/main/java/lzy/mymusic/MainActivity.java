@@ -258,8 +258,10 @@ public class MainActivity extends AppCompatActivity {
                             playbackDelayed = false;
                         }
                         //暂停播放
-                        if(myService.mediaPlayer.isPlaying())
+                        if(myService.mediaPlayer.isPlaying()){
                             myService.pause();
+                            abandon();
+                        }
                         break;
                     case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:    //暂时失去焦点
                         Log.i("TAG", "LOSS_TRANSIENT");
@@ -267,8 +269,9 @@ public class MainActivity extends AppCompatActivity {
                             resumeOnFocusGain = true;
                             playbackDelayed = false;
                         }
-                        if(myService.mediaPlayer.isPlaying())
+                        if(myService.mediaPlayer.isPlaying()) {
                             myService.pause();
+                        }
                         break;
                     case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:   //暂时失去
                         Log.i("TAG", "LOSS_TRANSIENT_CAN_DUCK");
