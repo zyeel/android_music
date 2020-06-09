@@ -118,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
                     if (myService.mediaPlayer.isPlaying()) {
                         //暂停
                         myService.pause();
+                        //主动暂停，放弃焦点
+                        abandon();
                     } else if (!myService.mediaPlayer.isPlaying()) {
                         if(request()) {
                             //继续播放
@@ -213,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                             int all_time = myService.mediaPlayer.getDuration();
                             seekBar.setMax(all_time / 1000);
                             setPlaysong();
-                            Log.i("TAG", all_time + "");
+                            //Log.i("TAG", all_time + "");
                         }
                 }
             }

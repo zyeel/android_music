@@ -299,12 +299,14 @@ public class MyService extends Service {
         //允许rebind
         return true;
     }
+
     @Override
     public void onRebind(Intent intent) {
         // A client is binding to the service with bindService(),
         // after onUnbind() has already been called
         Log.i("TAG", "SER_REBIND");
     }
+
     @Override
     public void onDestroy() {
         // The service is no longer used and is being destroyed
